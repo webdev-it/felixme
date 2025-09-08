@@ -1,123 +1,82 @@
 <!doctype html>
 <html lang="ru">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>FelixMe — FelixTeam</title>
-  <link rel="stylesheet" href="styles.css">
-  <link rel="icon" href="assets/favicon.svg">
-  <meta name="description" content="FelixMe — команда мобильных и веб-разработчиков. Создаём надежные приложения для стартапов и бизнеса." />
-  <meta name="keywords" content="FelixMe, FelixTeam, mobile development, web development, app development, startup, UX, design">
-  <meta name="author" content="FelixTeam">
-</head>
-<body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <div class="brand">
-        <div class="logo" id="logo">
-          <!-- logo placeholder: replace /public/assets/logo.svg -->
-          <img src="assets/logo-placeholder.svg" alt="FelixMe logo placeholder" />
-        </div>
-        <div class="brand-text">
-          <h1>FelixMe</h1>
-          <small>by FelixTeam</small>
-        </div>
-      </div>
-      <nav class="main-nav">
-        <a href="index.html">Главная</a>
-        <a href="about.html">О нас</a>
-        <a href="apps.html">Приложения</a>
-        <a href="team.html">Команда</a>
-        <a href="careers.html">Карьера</a>
-        <a href="contact.html" class="cta">Контакты</a>
-      </nav>
-    </div>
-  </header>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Ayugram</title>
+        <meta name="description" content="Сайт приложения Ayugram — адаптивный, стилизованный в киберпанк-стиле, без прокрутки" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;500&display=swap" rel="stylesheet">
+        <style>
+            :root{
+                --bg1:#060514; --bg2:#0e0530; --neon-cyan:#00f0ff; --neon-pink:#ff2d95; --muted:#9ecbe4;
+            }
+            *{box-sizing:border-box}
+            html,body{height:100%;}
+            html,body{margin:0;padding:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;color:#e6eef8;background:radial-gradient(800px 400px at 10% 10%, rgba(0,240,255,0.04), transparent),radial-gradient(700px 350px at 90% 90%, rgba(255,45,149,0.03), transparent),linear-gradient(180deg,var(--bg1),var(--bg2));overflow:hidden;overscroll-behavior:none}
 
-  <main>
-    <section id="home" class="hero">
-      <div class="container">
-        <h2>Мы создаём собственные мобильные и веб-приложения</h2>
-        <p>FelixTeam работает над собственными продуктами и экспериментальными сервисами — дизайн, разработка и поддержка внутри команды.</p>
-        <div class="hero-actions">
-          <a href="apps.html" class="btn">Наши приложения</a>
-          <a href="about.html" class="btn ghost">О команде</a>
-        </div>
-      </div>
-    </section>
+            /* Layout uses existing elements only */
+            body{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:28px}
+            .logo{font-family:Orbitron, sans-serif;color:var(--neon-pink);text-shadow:0 0 10px rgba(255,45,149,0.35);margin:0}
+            h1{font-family:Orbitron, sans-serif;margin:0;font-size:36px;background:linear-gradient(90deg,var(--neon-cyan),var(--neon-pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+            img{width:96px;height:96px;object-fit:contain;border-radius:18px;box-shadow:0 8px 30px rgba(0,0,0,0.6),0 0 22px rgba(0,240,255,0.06) inset}
+            button{appearance:none;border:0;padding:10px 16px;border-radius:10px;background:linear-gradient(90deg,var(--neon-cyan),var(--neon-pink));color:#07102a;font-weight:600;cursor:pointer}
+            p{max-width:760px;margin:0;color:var(--muted);text-align:center}
+            div[role="ads"]{width:320px;height:50px;opacity:0.6}
+            footer{position:fixed;left:0;right:0;bottom:12px;text-align:center;font-size:13px;color:var(--muted)}
 
-    <section id="about" class="section">
-      <div class="container">
-        <h3>О нас</h3>
-        <div class="accordion">
-          <div class="accordion-item">
-            <button class="accordion-header" aria-expanded="false">Видение</button>
-            <div class="accordion-content">Мы фокусируемся на создании долговременных продуктов с вниманием к пользователям и качеству реализации.</div>
-          </div>
-          <div class="accordion-item">
-            <button class="accordion-header" aria-expanded="false">Технологии</button>
-            <div class="accordion-content">Мы используем современные стеки: React, React Native, Node.js, TypeScript и облачные сервисы для продакшена.</div>
-          </div>
-          <div class="accordion-item">
-            <button class="accordion-header" aria-expanded="false">Процесс</button>
-            <div class="accordion-content">Небольшие кросс‑функциональные команды, CI/CD, автоматические тесты, регулярные ретроспективы и улучшение процессов.</div>
-          </div>
-        </div>
-      </div>
-    </section>
+            /* Minimal decorative scanlines without extra DOM */
+            body::before{content:'';position:fixed;inset:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,0.01) 1px,transparent 1px);background-size:100% 3px;mix-blend-mode:overlay;opacity:0.6}
 
-    <section id="apps" class="section alt">
-      <div class="container">
-        <h3>Наши приложения</h3>
-        <p class="muted">Список наших продуктов появится здесь. Пока — заглушка.</p>
-        <div id="apps-grid" class="apps-grid">
-          <!-- empty placeholder cards will be rendered here by JS -->
-        </div>
-      </div>
-    </section>
+            /* Responsive tweaks (no new elements) */
+            @media (max-width:600px){h1{font-size:22px}img{width:72px;height:72px}body{padding:18px}}
 
-    <section id="team" class="section">
-      <div class="container">
-        <h3>Команда</h3>
-        <p>Мы — кросс-функциональная команда разработчиков, дизайнеров и продукт-менеджеров.</p>
-        <div id="team-list" class="team-grid">
-          <!-- Team populated by JS -->
-        </div>
-      </div>
-    </section>
+            /* Accessibility: reduce motion */
+            @media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+        </style>
+    </head>
+    <body>
+        <h3 class="logo">FelixMe</h3>
+        <h1>Ayugram</h1>
+        <img src="https://i-pro.by/wp-content/uploads/2025/07/AyuGram.webp" alt="Айкон приложения Ayugram">
+        <a href="https://lnk.do/WjDQuanT" target="_blank"><button id="downloadBtn" aria-label="Скачать приложение">Download</button></a>
+        <!--по кнопке должен скачаться файл из папки apps/ayugram.apk-->
+        <p>Скачайте и установите наше приложение чтобы насладиться всеми возможностями популярного мессенджера.</p>
+        <div role="ads" aria-hidden="true"><!--Место для рекламы adsense--></div>
+        <footer style="text-align: center; align-items: center;">
+            <div>
+                 <a href="https://tg.me/felixme_online" style="color:inherit; font-size: medium;"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Telegram_2019_Logo.svg/1200px-Telegram_2019_Logo.svg.png" alt="Telegram" style="width:40px;height: auto;vertical-align:middle"><br><br><p>Telegram</p></a>
+                 <br><br><br>
+                 2025 FelixMe
 
-    <section id="careers" class="section alt">
-      <div class="container">
-        <h3>Карьера</h3>
-        <p>Ищем талантливых разработчиков и дизайнеров. Предлагаем гибкий график, удалённую работу и интересные задачи.</p>
-        <ul>
-          <li>Стажировки и менторство</li>
-          <li>Чёткие цели и регулярные ревью</li>
-          <li>Компенсация и бонусы по результатам</li>
-        </ul>
-      </div>
-    </section>
+                 </div>
+        </footer>
 
-    <section id="contact" class="section contact">
-      <div class="container">
-        <h3>Контакты</h3>
-        <p class="muted">Общие вопросы, вакансии и сотрудничество по продуктам: <a href="mailto:team@felixme.dev">team@felixme.dev</a></p>
-        <p class="muted">Следите за обновлениями в секции <strong>Наши приложения</strong>.</p>
-      </div>
-    </section>
-  </main>
+        <script>
+            // Блокируем прокрутку и клавиши навигации — но не мешаем вводу в полях
+            (function(){
+                var opts = { passive: false };
+                function prevent(e){ if(e && e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.isContentEditable)) return; e.preventDefault(); }
+                window.addEventListener('wheel', prevent, opts);
+                window.addEventListener('touchmove', prevent, opts);
+                window.addEventListener('keydown', function(e){
+                    var key = e.key || e.keyCode;
+                    var blocked = ['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','PageUp','PageDown','Home','End',' '];
+                    if(typeof key === 'number'){ if([32,33,34,35,36,37,38,39,40].indexOf(key)!==-1) e.preventDefault(); }
+                    else { if(blocked.indexOf(String(key))!==-1) e.preventDefault(); }
+                }, opts);
 
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <div>© <span id="year"></span> FelixMe — от команды FelixTeam</div>
-      <div class="socials">
-        <a href="#">Twitter</a>
-        <a href="#">GitHub</a>
-        <a href="#">LinkedIn</a>
-      </div>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
-</body>
+                // Download button behavior — uses existing button element and relative path
+                var btn = document.getElementById('downloadBtn');
+                if(btn){
+                    btn.addEventListener('click', function(){
+                        // attempt download from apps/ayugram.apk (server must serve this file)
+                        var url = 'apps/ayugram.zip';
+                        // create a temporary anchor to trigger download when possible
+                        var a = document.createElement('a'); a.href = url; a.download = ''; document.body.appendChild(a); a.click(); a.remove();
+                    });
+                }
+            })();
+        </script>
+    </body>
 </html>
