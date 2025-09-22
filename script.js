@@ -1,64 +1,53 @@
-document.addEventListener('DOMContentLoaded', () => {
-  // populate year
-  document.getElementById('year').textContent = new Date().getFullYear();
+// Год в футере
+document.getElementById('year').textContent = new Date().getFullYear();
 
-  // fetch team from API
-  fetch('/api/team')
-    .then(r => r.json())
-    .then(data => {
-      const list = document.getElementById('team-list');
-      data.team.forEach(m => {
-        const el = document.createElement('div');
-        el.className = 'member';
-        el.innerHTML = `<strong>${m.name}</strong><div class="muted">${m.role}</div><div class="muted">${m.email}</div>`;
-        list.appendChild(el);
-      });
-    })
-    .catch(() => {
-      const list = document.getElementById('team-list');
-      list.innerHTML = '<p class="muted">Не удалось загрузить команду.</p>';
-    });
-
-
-  // Interactive accordion
-  document.querySelectorAll('.accordion-header').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const expanded = btn.getAttribute('aria-expanded') === 'true';
-      btn.setAttribute('aria-expanded', String(!expanded));
-      const content = btn.nextElementSibling;
-      if (!expanded) content.classList.add('open');
-      else content.classList.remove('open');
-    });
-  });
-
-  // Render apps placeholders (empty for now)
-  const appsGrid = document.getElementById('apps-grid');
-  if (appsGrid) {
-    for (let i = 0; i < 4; i++) {
-      const c = document.createElement('div');
-      c.className = 'app-card';
-      c.innerHTML = `<div><strong>Приложение ${i+1}</strong><div class="muted">Заглушка — скоро тут будет продукт</div></div>`;
-      appsGrid.appendChild(c);
+// Тема: авто/свет/тёмная, с сохранением в localStorage
+// --- THEME BUTTON UPGRADE (robust, cross-page) ---
+(function(){
+  const KEY = 'felix-theme';
+  const root = document.documentElement;
+  const btn = document.getElementById('themeToggle');
+  function setTheme(theme) {
+    root.setAttribute('data-theme', theme);
+    localStorage.setItem(KEY, theme);
+    if(btn) {
+      btn.classList.remove('active');
+      if(theme === 'dark') {
+        btn.classList.add('active');
+        if(btn.querySelector('.icon')) btn.querySelector('.icon').textContent = '🌙';
+      } else {
+        if(btn.querySelector('.icon')) btn.querySelector('.icon').textContent = '☀️';
+      }
     }
   }
-
-  // Smooth nav scrolling and active link
-  document.querySelectorAll('.main-nav a').forEach(a => {
-    a.addEventListener('click', (e) => {
-      const href = a.getAttribute('href');
-      if (href && href.startsWith('#')) {
-        e.preventDefault();
-        document.querySelector(href).scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
+  // Инициализация
+  let saved = localStorage.getItem(KEY);
+  if(saved !== 'light' && saved !== 'dark') {
+    saved = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+  setTheme(saved);
+  if(btn) {
+    btn.addEventListener('click', ()=>{
+      const cur = root.getAttribute('data-theme');
+      const next = cur === 'dark' ? 'light' : 'dark';
+      setTheme(next);
     });
+  }
+  // Автоматически обновлять тему при смене системной темы
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+    if(!localStorage.getItem(KEY)) setTheme(e.matches ? 'dark' : 'light');
   });
+})();
+// --- END THEME BUTTON UPGRADE ---
 
-  // simple on-scroll active link highlight
-  const sections = Array.from(document.querySelectorAll('main section'));
-  window.addEventListener('scroll', () => {
-    const mid = window.scrollY + window.innerHeight / 2;
-    let current = sections[0];
-    for (const s of sections) if (s.offsetTop <= mid) current = s;
-    document.querySelectorAll('.main-nav a').forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current.id));
+// Мобильное меню
+(function(){
+  const btn = document.getElementById('menuBtn');
+  const panel = document.getElementById('mobileNav');
+  if(!btn || !panel) return;
+  btn.addEventListener('click', ()=>{
+    const hidden = panel.hasAttribute('hidden');
+    if(hidden){ panel.removeAttribute('hidden'); panel.style.display = 'grid'; }
+    else { panel.setAttribute('hidden',''); panel.style.display = 'none'; }
   });
-});
+})();

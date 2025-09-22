@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="auto">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Felix Browser — Скачать и узнать больше</title>
+  <meta name="description" content="Felix Browser — быстрый, приватный браузер для Android. Без рекламы, с современным дизайном и защитой данных.">
+  <link rel="stylesheet" href="/styles.css">
+  <style>@import url('/apps/felixbrowser/styles.css');</style>
+</head>
+<body>
+  <header class="header">
+    <nav class="nav container" aria-label="Главное меню">
+      <div class="left">
+        <a class="brand" href="/" aria-label="FelixMe — на главную">
+          <img src="/images/ico.png" alt="FelixMe" />
+        </a>
+        <div class="dots" aria-hidden="true">
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        </div>
+      </div>
+      <div class="right">
+        <button class="icon-btn" id="themeToggle" aria-label="Переключить тему" title="Тема">
+          <span class="icon">🌓</span>
+        </button>
+      </div>
+    </nav>
+  </header>
+  <main class="app-page-container">
+    <section class="app-header">
+      <img class="app-icon-large" src="/images/felixbrowser.png" alt="Felix Browser логотип">
+      <div class="app-info">
+        <h1 class="app-title">Felix Browser</h1>
+        <div class="app-publisher">FelixMe • Браузер</div>
+        <div class="app-rating">
+          <span class="star">★</span> 4.8 &nbsp;•&nbsp; 103+ оценок
+        </div>
+        <div class="app-tags">
+          <span class="app-tag">Быстрый</span>
+          <span class="app-tag">Приватный</span>
+          <span class="app-tag">Без рекламы</span>
+        </div>
+        <a id="android-download" href="https://ru.files.fm/u/gw42qjds26" class="download-btn" download target="_blank" rel="noopener noreferrer">
+          <span>⬇️ Скачать для Android</span>
+        </a>
+        <div id="download-counter" style="margin-top:8px;font-size:0.9em;color:var(--muted);">Загрузка...</div>
+      </div>
+    </section>
+
+    <section class="app-section app-gallery" aria-label="Скриншоты приложения">
+      <img class="app-screenshot" src="images/felixbrowser_screen1.jpg" alt="Скриншот Felix Browser 1">
+      <img class="app-screenshot" src="images/felixbrowser_screen2.jpg" alt="Скриншот Felix Browser 2">
+      <img class="app-screenshot" src="images/felixbrowser_screen3.jpg" alt="Скриншот Felix Browser 3">
+    </section>
+
+    <section class="app-section">
+      <h2>Описание</h2>
+      <p>
+        Felix Browser — это современный браузер для Android, созданный для скорости, приватности и удобства. Минималистичный интерфейс, встроенные инструменты для защиты данных и отсутствие рекламы делают его идеальным выбором для ежедневного серфинга.
+        <br><b>
+        Внимание!!!
+        <br>
+        Скачав и установив Felix Browser, вы автоматически соглашаетесь с нашим <a href="felixme.online/felixbrowser/term.html">Пользовательским соглашением</a> и <a href="felixme.online/felixbrowser/privacy.html">политикой конфиденциальности</a>!
+          </b>
+      </p>
+    </section>
+
+    <section class="app-section">
+      <h2>Возможности</h2>
+      <ul class="feature-list">
+        <li>Молниеносная загрузка страниц</li>
+        <li>Встроенный блокировщик рекламы и трекеров</li>
+        <li>Режим инкогнито и приватные вкладки</li>
+        <li>Синхронизация закладок и настроек</li>
+        <li>Поддержка расширений</li>
+        <li>Тёмная и светлая темы</li>
+        <li>Минимальное потребление ресурсов</li>
+      </ul>
+    </section>
+
+    <section class="app-section">
+      <h2>Требования</h2>
+      <ul>
+        <li>Android 7.0+</li>
+        <li>Свободное место: 90 МБ</li>
+        <li>Интернет-соединение для загрузки страниц</li>
+      </ul>
+    </section>
+
+    <section class="app-section" style="text-align:center;">
+      <div style="margin-top:10px;font-size:0.98em;color:var(--muted);">
+        <span>Версия 0.0.3 • Обновлено 22 сентября 2025</span>
+      </div>
+    </section>
+  </main>
+  <footer class="container" style="text-align:center;">
+    <p>© <span id="year"></span> FelixMe. Все права защищены.</p>
+  </footer>
+  <script src="script.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

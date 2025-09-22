@@ -1,82 +1,82 @@
 <!doctype html>
-<html lang="ru">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Ayugram</title>
-        <meta name="description" content="Сайт приложения Ayugram — адаптивный, стилизованный в киберпанк-стиле, без прокрутки" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;500&display=swap" rel="stylesheet">
-        <style>
-            :root{
-                --bg1:#060514; --bg2:#0e0530; --neon-cyan:#00f0ff; --neon-pink:#ff2d95; --muted:#9ecbe4;
-            }
-            *{box-sizing:border-box}
-            html,body{height:100%;}
-            html,body{margin:0;padding:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;color:#e6eef8;background:radial-gradient(800px 400px at 10% 10%, rgba(0,240,255,0.04), transparent),radial-gradient(700px 350px at 90% 90%, rgba(255,45,149,0.03), transparent),linear-gradient(180deg,var(--bg1),var(--bg2));overflow:hidden;overscroll-behavior:none}
+<html lang="ru" data-theme="auto">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FelixMe — продукты и приложения</title>
+  <meta name="description" content="FelixMe — сайт о наших продуктах и приложениях. Тёмная тема, адаптивный интерфейс."/>
+  <meta name="color-scheme" content="dark light" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="header">
+    <nav class="nav container" aria-label="Главное меню">
+      <div class="left">
+        <a class="brand" href="/" aria-label="FelixMe — на главную">
+          <!-- Замените src на свой логотип -->
+          <img src="images/ico.png" alt="FelixMe" />
+        </a>
+        <div class="dots" aria-hidden="true">
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        </div>
+      </div>
+      <div class="right">
+        <button class="icon-btn" id="themeToggle" aria-label="Переключить тему" title="Тема">
+          <span class="icon">🌓</span>
+        </button>
+        <button class="icon-btn menu" id="menuBtn" aria-label="Меню" title="Меню">
+          <span class="icon">☰</span>
+        </button>
+      </div>
+    </nav>
+    <div class="mobile" id="mobileNav" hidden>
+      <a href="#about">О нас</a>
+      <a href="#apps">Приложения</a>
+      <a href="#contacts">Контакты</a>
+    </div>
+  </header>
 
-            /* Layout uses existing elements only */
-            body{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:28px}
-            .logo{font-family:Orbitron, sans-serif;color:var(--neon-pink);text-shadow:0 0 10px rgba(255,45,149,0.35);margin:0}
-            h1{font-family:Orbitron, sans-serif;margin:0;font-size:36px;background:linear-gradient(90deg,var(--neon-cyan),var(--neon-pink));-webkit-background-clip:text;background-clip:text;color:transparent}
-            img{width:96px;height:96px;object-fit:contain;border-radius:18px;box-shadow:0 8px 30px rgba(0,0,0,0.6),0 0 22px rgba(0,240,255,0.06) inset}
-            button{appearance:none;border:0;padding:10px 16px;border-radius:10px;background:linear-gradient(90deg,var(--neon-cyan),var(--neon-pink));color:#07102a;font-weight:600;cursor:pointer}
-            p{max-width:760px;margin:0;color:var(--muted);text-align:center}
-            div[role="ads"]{width:320px;height:50px;opacity:0.6}
-            footer{position:fixed;left:0;right:0;bottom:12px;text-align:center;font-size:13px;color:var(--muted)}
+  <main class="container">
+    <section class="grid">
+      <!-- Блок 1: общий текст о компании -->
+      <article class="card ghost" id="about" aria-label="Информационный блок">
+        <div>
+          <h1>FelixMe — продукты и инструменты с характером</h1>
+          <p class="lead">
+            Мы создаём не только браузер. В линейке FelixMe — быстрые и понятные приложения
+            для работы, творчества и приватности. Минимум шума — максимум пользы.
+          </p>
+        </div>
+      </article>
 
-            /* Minimal decorative scanlines without extra DOM */
-            body::before{content:'';position:fixed;inset:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,0.01) 1px,transparent 1px);background-size:100% 3px;mix-blend-mode:overlay;opacity:0.6}
+      <!-- Блок 2: приложения (горизонтальный ряд) -->
+      <aside class="card" id="apps" aria-label="Приложения">
+        <h2 style="margin-top:0">Наши приложения</h2>
+        <div class="apps-row" role="list" aria-label="Список приложений">
+          <a class="app-tile" role="listitem" href="/apps/felixbrowser/index.html" aria-label="Felix Browser — страница приложения">
+            <!-- Замените на ссылку на иконку -->
+            <img class="app-icon" src="images/felixbrowser.png" alt="" />
+            <span class="app-name">Felix Browser</span>
+          </a>
+          <a class="app-tile" role="listitem" href="" onclick="alert('Это приложение пока что недоступно!')" "Felix Messenger — страница приложения">
+            <img class="app-icon" src="images/felixmessenger.png" alt="" />
+            <span class="app-name">Felix Messenger</span>
+          </a>
+        </div>
+      </aside>
+    </section>
+  </main>
 
-            /* Responsive tweaks (no new elements) */
-            @media (max-width:600px){h1{font-size:22px}img{width:72px;height:72px}body{padding:18px}}
-
-            /* Accessibility: reduce motion */
-            @media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
-        </style>
-    </head>
-    <body>
-        <h3 class="logo">FelixMe</h3>
-        <h1>Ayugram</h1>
-        <img src="https://i-pro.by/wp-content/uploads/2025/07/AyuGram.webp" alt="Айкон приложения Ayugram">
-        <a href="https://lnk.do/WjDQuanT" target="_blank"><button id="downloadBtn" aria-label="Скачать приложение">Download</button></a>
-        <!--по кнопке должен скачаться файл из папки apps/ayugram.apk-->
-        <p>Скачайте и установите наше приложение чтобы насладиться всеми возможностями популярного мессенджера.</p>
-        <div role="ads" aria-hidden="true"><!--Место для рекламы adsense--></div>
-        <footer style="text-align: center; align-items: center;">
-            <div>
-                 <a href="https://tg.me/felixme_online" style="color:inherit; font-size: medium;"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Telegram_2019_Logo.svg/1200px-Telegram_2019_Logo.svg.png" alt="Telegram" style="width:40px;height: auto;vertical-align:middle"><br><br><p>Telegram</p></a>
-                 <br><br><br>
-                 2025 FelixMe
-
-                 </div>
-        </footer>
-
-        <script>
-            // Блокируем прокрутку и клавиши навигации — но не мешаем вводу в полях
-            (function(){
-                var opts = { passive: false };
-                function prevent(e){ if(e && e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.isContentEditable)) return; e.preventDefault(); }
-                window.addEventListener('wheel', prevent, opts);
-                window.addEventListener('touchmove', prevent, opts);
-                window.addEventListener('keydown', function(e){
-                    var key = e.key || e.keyCode;
-                    var blocked = ['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','PageUp','PageDown','Home','End',' '];
-                    if(typeof key === 'number'){ if([32,33,34,35,36,37,38,39,40].indexOf(key)!==-1) e.preventDefault(); }
-                    else { if(blocked.indexOf(String(key))!==-1) e.preventDefault(); }
-                }, opts);
-
-                // Download button behavior — uses existing button element and relative path
-                var btn = document.getElementById('downloadBtn');
-                if(btn){
-                    btn.addEventListener('click', function(){
-                        // attempt download from apps/ayugram.apk (server must serve this file)
-                        var url = 'apps/ayugram.zip';
-                        // create a temporary anchor to trigger download when possible
-                        var a = document.createElement('a'); a.href = url; a.download = ''; document.body.appendChild(a); a.click(); a.remove();
-                    });
-                }
-            })();
-        </script>
-    </body>
+  <footer class="container" id="contacts">
+    <p>© <span id="year"></span> FelixMe. Все права защищены.</p>
+    <div style="margin-top:10px;font-size:1.05em;">
+      <b>Контакты:</b> 
+      <a href="mailto:support@felixme.online" style="color:var(--link);margin-right:18px;">support@felixme.online</a>
+      <a href="https://t.me/fteam_official" target="_blank" rel="noopener noreferrer" style="color:var(--accent);font-weight:600;">Telegram для связи</a>
+    </div>
+  </footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script src="script.js"></script>
+</body>
 </html>
