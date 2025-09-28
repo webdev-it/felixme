@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
         hideError(field, errorElement);
     }
 
-    // Обработка отправки формы
+    // Обработка отправки формы через новый API
     form.addEventListener('submit', function(event) {
         event.preventDefault();
         
@@ -75,34 +75,8 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        // Показать загрузку
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = 'Отправляем... <span class="loading"></span>';
-        
-        // Отправить форму
-        const formData = new FormData(form);
-        
-        fetch('send_form.php', {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => {
-            if (response.ok) {
-                // Перенаправление на страницу успеха
-                window.location.href = 'success.html';
-            } else {
-                throw new Error('Ошибка отправки формы');
-            }
-        })
-        .catch(error => {
-            alert('Произошла ошибка при отправке формы. Попробуйте еще раз.');
-            console.error('Error:', error);
-        })
-        .finally(() => {
-            // Вернуть кнопку в исходное состояние
-            submitBtn.disabled = false;
-            submitBtn.innerHTML = 'Отправить';
-        });
+        // Вызываем новую функцию API отправки
+        submitForm(event);
     });
 
     // Анимация при скролле
@@ -248,7 +222,7 @@ document.addEventListener('keydown', function(event) {
 // API Configuration
 const API_BASE_URL = window.location.hostname === 'localhost' 
     ? 'http://localhost:3000' 
-    : 'https://wedding-invitation-backend.onrender.com'; // Backend API на Render.com
+    : 'https://wedding-invitation-backend-lj0d.onrender.com'; // Ваш реальный Render backend
 
 // Функция отправки формы через API
 async function submitForm(event) {
