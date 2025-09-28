@@ -66,14 +66,8 @@
                     <h3>Основная информация</h3>
                     
                     <div class="form-group">
-                        <label for="name">Ваше имя *</label>
-                        <input type="text" id="name" name="name" required maxlength="50">
-                        <div class="error-message"></div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="lastname">Ваша фамилия *</label>
-                        <input type="text" id="lastname" name="lastname" required maxlength="50">
+                        <label for="name">Ваше полное имя *</label>
+                        <input type="text" id="name" name="name" required maxlength="100" placeholder="Например: Иван Петров или John Smith">
                         <div class="error-message"></div>
                     </div>
                 </div>
@@ -86,15 +80,15 @@
                         <label>Вы планируете присутствовать на свадьбе? *</label>
                         <div class="radio-group">
                             <div class="radio-item">
-                                <input type="radio" id="yes" name="attendance" value="yes" required>
+                                <input type="radio" id="yes" name="attendance" value="Буду присутствовать" required>
                                 <label for="yes">✅ Да, буду</label>
                             </div>
                             <div class="radio-item">
-                                <input type="radio" id="no" name="attendance" value="no">
+                                <input type="radio" id="no" name="attendance" value="Не смогу присутствовать">
                                 <label for="no">❌ К сожалению, нет</label>
                             </div>
                             <div class="radio-item">
-                                <input type="radio" id="maybe" name="attendance" value="maybe">
+                                <input type="radio" id="maybe" name="attendance" value="Пока не знаю">
                                 <label for="maybe">❓ Пока не уверен(а)</label>
                             </div>
                         </div>
