@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Спасибо! - Анкета отправлена</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💒</text></svg>">
+    <style>
+        .success-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .success-card {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+            animation: successPop 0.8s ease-out;
+        }
+        .success-monogram {
+            font-size: 5rem;
+            font-family: var(--elegant-font);
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+        .success-title {
+            font-family: var(--serif-font);
+            color: var(--accent-color);
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        .success-message {
+            font-family: var(--body-font);
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+        .success-details {
+            background: var(--secondary-color);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            margin: 30px 0;
+            border: 2px solid var(--border-color);
+        }
+        .success-details h3 {
+            font-family: var(--serif-font);
+            color: var(--accent-color);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+        .back-btn {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            text-decoration: none;
+            padding: 18px 40px;
+            border-radius: 30px;
+            font-family: var(--serif-font);
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            margin-top: 20px;
+            box-shadow: var(--shadow);
+        }
+        .back-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(139, 69, 19, 0.3);
+        }
+        @keyframes successPop {
+            0% { opacity: 0; transform: scale(0.8) translateY(30px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Фоновая музыка для страницы успеха -->
+    <audio id="backgroundMusic" autoplay loop preload="auto" style="display: none;">
+        <source src="bg_music/bg_music.mp3" type="audio/mpeg">
+        Ваш браузер не поддерживает воспроизведение аудио.
+    </audio>
+    
+    <!-- Кнопка управления музыкой -->
+    <div id="musicControl" class="music-control">
+        <button id="musicToggle" onclick="toggleMusic()" title="Включить/выключить музыку">
+            🎵
+        </button>
+    </div>
+    
+    <div class="success-container">
+        <div class="container">
+            <div class="success-card">
+                <div class="success-monogram">И & С</div>
+                <h1 class="success-title">Спасибо!</h1>
+                <p class="success-message">
+                    Ваша анкета успешно отправлена!<br>
+                    Мы получили все ваши данные и обязательно учтём их при планировании торжества.
+                </p>
+                
+                <div class="success-details">
+                    <h3>Что происходит дальше?</h3>
+                    <div style="text-align: left; font-family: var(--body-font);">
+                        <p style="margin: 10px 0;">✓ Ваши данные сохранены</p>
+                        <p style="margin: 10px 0;">✓ Организаторы получили уведомление</p>
+                        <p style="margin: 10px 0;">✓ При необходимости с вами свяжутся</p>
+                        <p style="margin: 10px 0;">✓ Следите за обновлениями</p>
+                    </div>
+                </div>
+                
+                <div class="decorative-border"></div>
+                
+                <a href="index.html" class="back-btn">Вернуться к форме</a>
+                
+                <p style="margin-top: 30px; font-style: italic; color: var(--accent-color); font-family: var(--elegant-font); font-size: 1.5rem;">
+                    С уважением,<br>
+                    Икромхуджа & Сарвиноз
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Система управления фоновой музыкой для страницы успеха
+        let musicInitialized = false;
+        let backgroundMusic = null;
+        let musicToggleBtn = null;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            initBackgroundMusic();
+        });
+
+        function initBackgroundMusic() {
+            backgroundMusic = document.getElementById('backgroundMusic');
+            musicToggleBtn = document.getElementById('musicToggle');
+            
+            if (!backgroundMusic || !musicToggleBtn) return;
+            
+            // Установка начальной громкости
+            backgroundMusic.volume = 0.3;
+            
+            // Попытка автовоспроизведения при загрузке страницы
+            startMusicWithUserInteraction();
+            
+            // Обработчик ошибок аудио
+            backgroundMusic.addEventListener('error', function() {
+                console.log('Ошибка загрузки фоновой музыки');
+                musicToggleBtn.style.display = 'none';
+            });
+            
+            // События воспроизведения
+            backgroundMusic.addEventListener('play', function() {
+                musicToggleBtn.classList.add('playing');
+                musicToggleBtn.classList.remove('muted');
+                musicToggleBtn.innerHTML = '🎵';
+                musicToggleBtn.title = 'Выключить музыку';
+            });
+            
+            backgroundMusic.addEventListener('pause', function() {
+                musicToggleBtn.classList.remove('playing');
+                musicToggleBtn.classList.add('muted');
+                musicToggleBtn.innerHTML = '🔇';
+                musicToggleBtn.title = 'Включить музыку';
+            });
+        }
+
+        function startMusicWithUserInteraction() {
+            // Функция для попытки автовоспроизведения
+            function tryAutoplay() {
+                if (backgroundMusic && !musicInitialized) {
+                    backgroundMusic.play().then(() => {
+                        musicInitialized = true;
+                        console.log('Фоновая музыка запущена на странице успеха');
+                    }).catch(() => {
+                        // Автовоспроизведение заблокировано, ждем взаимодействия пользователя
+                        document.addEventListener('click', enableMusicOnFirstClick, { once: true });
+                        document.addEventListener('keydown', enableMusicOnFirstClick, { once: true });
+                        console.log('Автовоспроизведение заблокировано, ожидание взаимодействия пользователя');
+                    });
+                }
+            }
+            
+            // Запуск музыки при первом взаимодействии пользователя
+            function enableMusicOnFirstClick() {
+                if (backgroundMusic && !musicInitialized) {
+                    backgroundMusic.play().then(() => {
+                        musicInitialized = true;
+                        console.log('Фоновая музыка запущена после взаимодействия пользователя');
+                    }).catch(error => {
+                        console.log('Не удалось запустить музыку:', error);
+                    });
+                }
+            }
+            
+            // Попытка автовоспроизведения при загрузке
+            setTimeout(tryAutoplay, 1000);
+        }
+
+        function toggleMusic() {
+            if (!backgroundMusic) return;
+            
+            if (backgroundMusic.paused) {
+                backgroundMusic.play().then(() => {
+                    console.log('Музыка включена пользователем');
+                }).catch(error => {
+                    console.log('Ошибка воспроизведения:', error);
+                });
+            } else {
+                backgroundMusic.pause();
+                console.log('Музыка выключена пользователем');
+            }
+        }
+
+        // Управление музыкой с клавиатуры
+        document.addEventListener('keydown', function(event) {
+            // Пробел или M для переключения музыки
+            if ((event.code === 'Space' || event.code === 'KeyM') && !event.target.matches('input, textarea, select')) {
+                event.preventDefault();
+                toggleMusic();
+            }
+        });
+    </script>
+</body>
+</html>
